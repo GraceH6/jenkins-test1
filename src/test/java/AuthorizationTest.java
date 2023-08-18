@@ -23,7 +23,16 @@ public class AuthorizationTest {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*", "--headless");
+        //настроить для запуска в дженкинсе
+        options.addArguments("--headless");
+        options.addArguments("--disable-dev-shm-using");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--remote-debugging-port=9222");
+        options.addArguments("--disable-setuid-sandbox");
+        options.addArguments("--disable-web-security");
+
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://uitestingplayground.com/sampleapp");

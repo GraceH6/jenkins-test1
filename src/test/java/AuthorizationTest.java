@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
-public class JenkinsTest {
+public class AuthorizationTest {
     WebDriver driver;
     @Test
     void loginAndLogoutTest() {
@@ -23,7 +23,7 @@ public class JenkinsTest {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--remote-allow-origins=*", "--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://uitestingplayground.com/sampleapp");
